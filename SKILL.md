@@ -149,9 +149,13 @@ unhappy paths — that's where products break:
 Tear down everything you started (containers, volumes, processes). Then produce
 TWO artifacts in the workspace:
 
-**1. `crash-report.html` — the beautiful one.** A single self-contained file
-(inline CSS, screenshots embedded as data URIs, zero external requests) that
-reads like a crash-test readout:
+**1. `crash-report.html` — the beautiful one.** Start from
+`templates/report-template.html` shipped next to this SKILL.md (fill the
+`{{SLOTS}}`, duplicate scenario cards/findings rows per item, embed screenshots
+as data URIs). Do NOT redesign the page: every crash report should be
+recognizable at a glance. If the template is missing, build a single
+self-contained file (inline CSS, zero external requests) that reads like a
+crash-test readout:
 
 - Hero: the TTFS number huge, the one-sentence verdict under it
 - One card per crash scenario (flow): name, PASS/FAIL, what happened, its

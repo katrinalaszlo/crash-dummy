@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>crash-dummy report: {{TARGET_REPO}}</title>
+<style>
+  :root {
+    --bg: #fafaf8; --fg: #1a1a1a; --muted: #6b6b6b; --card: #ffffff;
+    --border: #e5e3de; --accent: #e8590c; --pass: #2f9e44; --hazard: repeating-linear-gradient(135deg, #1a1a1a 0 12px, #f5c518 12px 24px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141412; --fg: #ececea; --muted: #9a9a94; --card: #1e1e1b; --border: #32322e; --accent: #ff8a3d; --pass: #51cf66; }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--bg); color: var(--fg); font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, sans-serif; padding: 32px 16px; }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  .stripe { height: 10px; background: var(--hazard); border-radius: 3px; }
+  header { padding: 28px 0 20px; }
+  .tag { font: 600 12px/1 ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  h1 { font-size: 22px; margin: 6px 0 2px; }
+  h1 code { font-family: ui-monospace, monospace; }
+  .ttfs { font-variant-numeric: tabular-nums; font-size: 64px; font-weight: 750; letter-spacing: -0.02em; line-height: 1.05; margin: 18px 0 2px; }
+  .ttfs small { font-size: 15px; font-weight: 500; color: var(--muted); letter-spacing: 0; display: block; margin-top: 4px; }
+  .verdict { font-size: 17px; margin: 14px 0 0; max-width: 58ch; }
+  .grid { display: grid; gap: 14px; margin: 26px 0; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .card h2 { font-size: 15px; display: flex; align-items: baseline; gap: 10px; }
+  .badge { font: 700 11px/1 ui-monospace, monospace; letter-spacing: .06em; padding: 4px 8px; border-radius: 999px; color: #fff; background: var(--pass); }
+  .card p { color: var(--muted); font-size: 14px; margin-top: 6px; }
+  .card img { width: 100%; border: 1px solid var(--border); border-radius: 6px; margin-top: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  td { padding: 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  td:first-child { white-space: nowrap; font: 600 13px ui-monospace, monospace; color: var(--pass); }
+  .quote { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; font-size: 15px; color: var(--fg); margin: 8px 0; }
+  footer { color: var(--muted); font-size: 13px; padding: 20px 0 8px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stripe"></div>
+  <header>
+    <div class="tag">crash-dummy · {{MODE}} run · {{DATE}}</div>
+    <h1><code>{{TARGET_REPO}}</code> × dummy <code>{{DUMMY_NAME}}</code></h1>
+    <div class="ttfs num">{{TTFS}}<small>{{TTFS_CAPTION}}</small></div>
+    <p class="verdict">{{VERDICT}}</p>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <h2><span class="badge">PASS</span> Crash scenario 1+2: happy path &amp; exhaustion</h2>
+      <p>Five chat turns burn five credits with the balance live in the header (5 → 0). The sixth turn is denied <em>before</em> any provider cost: HTTP 402, red system message, paywall state.</p>
+      <img alt="Chat UI showing five answered turns, a credit balance of zero, and an out-of-credits paywall" src="{{SCENARIO_SCREENSHOT_DATA_URI}}">
+    </div>
+    <div class="card">
+      <h2><span class="badge">PASS</span> Crash scenario 3: mid-session repricing</h2>
+      <p>Operator publishes a credit weight (<code>gpt-4.1-mini: 2</code>) while the app runs. After the cutover, the unchanged client burns the new rate: 10 → 8 → 6, −2 per turn.</p>
+      <img alt="Chat UI showing turns deducting 2 credits each after the tariff took effect" src="{{SCENARIO_SCREENSHOT_DATA_URI}}">
+    </div>
+    <div class="card">
+      <h2>Findings</h2>
+      <table>
+        <tr><th>Grade</th><th>Finding</th></tr>
+        <tr><td>(+)</td><td>Prior F-high (undocumented second Docker stack at repo root) confirmed fixed in public main. Fresh clone is clean.</td></tr>
+        <tr><td>(+)</td><td><code>setup.sh</code> honors <code>API_PORT</code>, prints working credentials and next steps.</td></tr>
+        <tr><td>(+)</td><td>No new findings. Zero product friction this run.</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h2>Share block</h2>
+      <p class="quote">Shipped a release, then let a crash dummy loose on a fresh clone: stack up, chat until broke, get paywalled, watch the operator reprice mid-session: all green in 4m21s. The customer is code now, so it runs every release.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>dummy: <code>acme-chat</code> (Next.js credits customer) · teardown verified</span>
+    <span>made with <a href="https://github.com/katrinalaszlo/crash-dummy" style="color:var(--accent)">crash-dummy</a></span>
+  </footer>
+  <div class="stripe"></div>
+</div>
+</body>
+</html>
