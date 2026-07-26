@@ -15,6 +15,8 @@ friction report they never write.
 - Target: a GitHub URL or `org/repo` (required — ask if missing)
 - `--smoke`: one-file consumer script instead of a real client app (~5 min, for CI/release regression)
 - `--regression <client>`: reuse an existing fleet client instead of building one (see Fleet)
+- `--pr <number>`: after the run, post the readout as a comment on that PR of the
+  target repo — passing this flag IS the user's consent to post
 - Default mode is **real**: scaffold an actual application and integrate the product into it
 
 ## The Fleet (persistent clients)
@@ -180,12 +182,22 @@ a screenshot/transcript linked; teardown is confirmed (no containers/processes
 from this run still up); TTFS or wall time is stated. A finding without the
 exact command or doc line it came from doesn't ship.
 
+**Posting to a PR (only with `--pr <number>` or an explicit ask):** condense the
+readout into a comment — TTFS headline (with the delta vs this dummy's previous
+run against this repo, if a prior report exists in the fleet client's directory),
+a scenario PASS/FAIL table, the top findings with their doc/command lines, and a
+link to the full `crash-report.html` (upload it with `gh gist create` and link
+the gist; PR comments can't carry file attachments). Post via
+`gh pr comment <number> --repo <target> --body-file <file>`. Record this run's
+TTFS + date in `<fleet client>/crash-history.jsonl` so the next run has a delta.
+
 Then offer — as a separate step, outside the simulation — to fix the F-highs in
 the target repo.
 
 ## Rules
 
 - One run = one report. Don't fix things mid-simulation; that contaminates TTFS.
-- Never publish, post, or open issues anywhere without the user's say-so.
+- Never publish, post, or open issues anywhere without the user's say-so —
+  `--pr` counts as say-so for exactly one comment on exactly that PR.
 - Environmental deviations (ports, project names) are logged but never counted as friction.
 - The report names files and commands, not vibes.

@@ -38,6 +38,10 @@ same day.
 
 It tells you the estimated cost (time + tokens) before it starts driving.
 
+- 💬 **PR mode** (`--pr <number>`): posts the readout as a comment on your PR —
+  TTFS with delta vs the last run, scenario PASS/FAIL table, link to the full
+  report. The crash test shows up where your team already looks.
+
 ## Install
 
 Claude Code:
