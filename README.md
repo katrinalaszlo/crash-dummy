@@ -17,9 +17,9 @@ stumble gets logged with the exact command or doc line that caused it.
 4. **Run the crash scenarios:** the happy path, the limit (quota / denial / auth), and a config change mid-flight. The unhappy paths are where products break
 5. **The readout:** a beautiful self-contained `crash-report.html` (TTFS hero number, scenario cards with screenshots, findings ranked by severity) plus a grep-able markdown twin for CI
 
-A real readout, from a release regression run
-against [tanso-oss](https://github.com/tansohq/tanso-oss), all scenarios green
-in **4m 21s**. An earlier cold-start run on the same repo caught an
+The readout above is from a real regression run against
+[tanso-oss](https://github.com/tansohq/tanso-oss): all scenarios green in
+**4m 21s**. An earlier cold-start run on the same repo caught an
 undocumented second Docker stack at the repo root that hijacked
 `docker compose up`: a bug no amount of code review would surface. Fixed the
 same day. Live artifacts: [the HTML report](examples/sample-crash-report.html)
