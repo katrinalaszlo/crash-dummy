@@ -26,9 +26,12 @@
   .grid { display: grid; gap: 14px; margin: 26px 0; }
   .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
   .card h2 { font-size: 15px; display: flex; align-items: baseline; gap: 10px; }
-  .badge { font: 700 11px/1 ui-monospace, monospace; letter-spacing: .06em; padding: 4px 8px; border-radius: 999px; color: #fff; background: var(--pass); }
+  .badge { font: 700 12px/1 ui-monospace, monospace; letter-spacing: .06em; padding: 6px 12px; border-radius: 999px; color: #fff; background: var(--pass); }
+  .score { display: flex; flex-direction: column; gap: 8px; margin-top: 22px; }
+  .score-row { display: flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; font-size: 15px; font-weight: 600; }
+  .score-row .badge { margin-left: auto; }
   .card p { color: var(--muted); font-size: 14px; margin-top: 6px; }
-  .card img { width: 100%; border: 1px solid var(--border); border-radius: 6px; margin-top: 12px; }
+  .card img { display: block; max-width: 520px; width: 100%; margin: 12px auto 0; border: 1px solid var(--border); border-radius: 6px; }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
   th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--border); }
   td { padding: 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
@@ -46,6 +49,12 @@
     <h1><code>tansohq/tanso-oss</code> × dummy <code>acme-chat</code></h1>
     <div class="ttfs num">4m 21s<small>fresh public clone → all customer flows green</small></div>
     <p class="verdict">A pre-built customer app pointed at a fresh clone of main completes every documented flow (meter, deny, reprice) with zero deviations.</p>
+  
+  <div class="score">
+    <div class="score-row">Scenario 1: happy path <span class="badge">PASS</span></div>
+    <div class="score-row">Scenario 2: credit exhaustion <span class="badge">PASS</span></div>
+    <div class="score-row">Scenario 3: mid-session repricing <span class="badge">PASS</span></div>
+  </div>
   </header>
 
   <div class="grid">

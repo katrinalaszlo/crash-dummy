@@ -26,9 +26,12 @@
   .grid { display: grid; gap: 14px; margin: 26px 0; }
   .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
   .card h2 { font-size: 15px; display: flex; align-items: baseline; gap: 10px; }
-  .badge { font: 700 11px/1 ui-monospace, monospace; letter-spacing: .06em; padding: 4px 8px; border-radius: 999px; color: #fff; background: var(--pass); }
+  .badge { font: 700 12px/1 ui-monospace, monospace; letter-spacing: .06em; padding: 6px 12px; border-radius: 999px; color: #fff; background: var(--pass); }
+  .score { display: flex; flex-direction: column; gap: 8px; margin-top: 22px; }
+  .score-row { display: flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; font-size: 15px; font-weight: 600; }
+  .score-row .badge { margin-left: auto; }
   .card p { color: var(--muted); font-size: 14px; margin-top: 6px; }
-  .card img { width: 100%; border: 1px solid var(--border); border-radius: 6px; margin-top: 12px; }
+  .card img { display: block; max-width: 520px; width: 100%; margin: 12px auto 0; border: 1px solid var(--border); border-radius: 6px; }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
   th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--border); }
   td { padding: 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
@@ -46,6 +49,10 @@
     <h1><code>{{TARGET_REPO}}</code> × dummy <code>{{DUMMY_NAME}}</code></h1>
     <div class="ttfs num">{{TTFS}}<small>{{TTFS_CAPTION}}</small></div>
     <p class="verdict">{{VERDICT}}</p>
+  
+  <div class="score">
+    <div class="score-row">{{SCENARIO_NAME}} <span class="badge">{{PASS_OR_FAIL}}</span></div>
+  </div>
   </header>
 
   <div class="grid">
