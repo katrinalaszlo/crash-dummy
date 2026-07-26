@@ -6,6 +6,9 @@ It builds a test user with a real application, integrates your product the way
 your docs teach, and runs the flows your customers will actually run. Every
 stumble gets logged with the exact command or doc line that caused it.
 
+<img src="assets/sample-report.png" alt="Sample crash report: 4m21s, all scenarios green, chat app screenshots as evidence" width="820">
+
+
 ## How it works
 
 1. **Cold clone:** your public repo, fresh temp workspace, the way a stranger gets it
@@ -14,14 +17,13 @@ stumble gets logged with the exact command or doc line that caused it.
 4. **Run the crash scenarios:** the happy path, the limit (quota / denial / auth), and a config change mid-flight. The unhappy paths are where products break
 5. **The readout:** a beautiful self-contained `crash-report.html` (TTFS hero number, scenario cards with screenshots, findings ranked by severity) plus a grep-able markdown twin for CI
 
-See a real readout: [`examples/sample-crash-report.html`](examples/sample-crash-report.html)
-(download and open it; GitHub won't render HTML) or the
-[markdown twin](examples/sample-crash-report.md): a release regression run
+A real readout, from a release regression run
 against [tanso-oss](https://github.com/tansohq/tanso-oss), all scenarios green
 in **4m 21s**. An earlier cold-start run on the same repo caught an
 undocumented second Docker stack at the repo root that hijacked
 `docker compose up`: a bug no amount of code review would surface. Fixed the
-same day.
+same day. Live artifacts: [the HTML report](examples/sample-crash-report.html)
+and its [markdown twin](examples/sample-crash-report.md).
 
 ## Modes
 
