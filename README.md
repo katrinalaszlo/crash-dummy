@@ -1,4 +1,4 @@
-# 💥 crash-dummy
+# crash-dummy
 
 **It crashes your product before your users do.**
 
