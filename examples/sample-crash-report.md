@@ -1,4 +1,4 @@
-# field-test report — tansohq/tanso-oss
+# crash-dummy report — tansohq/tanso-oss
 
 **Mode:** regression (`--regression acme-chat`) · **Date:** 2026-07-26 · Fresh public clone → fresh Docker stack → existing fleet client
 

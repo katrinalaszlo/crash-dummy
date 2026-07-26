@@ -1,68 +1,68 @@
-# field-test
+# 💥 crash-dummy
 
-**An AI agent skill that tests your repo the way a real customer would — by
-becoming one.**
+**It crashes into your product before your users do.**
 
-Code review checks what your code says. field-test checks what your product
-*does*: it clones your repo cold, reads only what a stranger can see (README,
-docs site, published package), builds an actual client application against your
-docs, integrates your product into it, and runs it through real user flows —
-including the unhappy ones. Then it files the friction report your users never
-write.
+Code review checks what your code says. crash-dummy checks what your product
+*does*: it builds a crash test dummy — a real client application, assembled
+from your docs alone — straps it in, and drives it into your product at full
+speed. Real clone, real integration, real user flows, real failures. Then it
+hands you the sensor readout.
 
-It exists because of a simple observation: if you don't have a customer's
-experience to test with, build one that mimics it. Engineers review code;
-product people walk through the product. Now that code is cheap to write, the
-walkthrough can be code too.
+Why a dummy? Because the alternative is your users. 🚗🧱
 
-## What a run looks like
+## How a crash test works
 
-1. **Fresh clone, isolated workspace** — your public repo, not a maintainer's checkout
-2. **Docs only** — reading your source is forbidden; getting stuck *is* the finding
-3. **Follow your quickstart verbatim** — every deviation is logged with severity
-4. **Build a real client** — an actual app (`create-next-app`-real, not a curl script) integrating your product the way your typical customer would
-5. **Run the flows** — happy path, the limit (quota/denial/auth), and a mid-flight config change
-6. **Report** — headline TTFS (time to first success), findings ranked with the exact command or doc line, evidence screenshots, teardown verified
+1. 🧊 **Cold clone** — your public repo, fresh temp workspace, the way a stranger gets it
+2. 📖 **Docs only** — reading your source is forbidden; getting stuck *is* the finding
+3. 🏗️ **Build the dummy** — an actual application (real framework, real UI, real env config) integrating your product exactly as your docs teach
+4. 💥 **Run the crash scenarios** — the happy path, the limit (quota / denial / auth), and a config change mid-flight. The unhappy paths are where products break
+5. 📋 **The readout** — a beautiful self-contained `crash-report.html` (TTFS hero number, scenario cards with screenshots, findings ranked by severity) plus a grep-able markdown twin for CI
 
-See a real one: [`examples/sample-regression-report.md`](examples/sample-regression-report.md)
-— a release regression run against [tanso-oss](https://github.com/tansohq/tanso-oss),
-all flows green in 4m21s. An earlier cold-start run on the same repo caught an
-undocumented second Docker stack at the repo root that hijacked `docker compose up`
-— a bug no amount of code review would surface, fixed the same day.
+See a real readout: [`examples/sample-crash-report.html`](examples/sample-crash-report.html)
+(download and open — GitHub won't render it) or the
+[markdown twin](examples/sample-crash-report.md) — a release regression run
+against [tanso-oss](https://github.com/tansohq/tanso-oss), all scenarios green
+in **4m 21s**. An earlier cold-start run on the same repo caught an
+undocumented second Docker stack at the repo root that hijacked
+`docker compose up` — a bug no amount of code review would surface. Fixed the
+same day.
 
-## The two modes
+## Two ways to crash
 
-- **Cold-start** (default): a brand-new client built from docs alone, TTFS measured.
-  Run it when docs, onboarding, or SDKs change.
-- **Regression** (`--regression <client>`): clients aren't throwaway — they live in
-  a fleet directory and get reused. Point an existing client at a fresh stack and
-  rerun its flows. Cheap enough for every release.
+- 🆕 **Cold-start** (default): builds a brand-new dummy from your docs alone and
+  measures **TTFS** — time from clone to first success. Run it when docs,
+  onboarding, or SDKs change.
+- 🔁 **Regression** (`--regression <dummy>`): dummies aren't throwaway — they
+  live in a garage (`~/crash-dummies/`) and get reused. Point an existing dummy
+  at a fresh stack and rerun its scenarios. Cheap enough for every release.
+
+It tells you the estimated cost (time + tokens) before it starts driving.
 
 ## Install
 
 Claude Code:
 
 ```bash
-git clone https://github.com/tansohq/field-test.git ~/.claude/skills/field-test
+git clone https://github.com/tansohq/crash-dummy.git ~/.claude/skills/crash-dummy
 ```
 
-Then: `/field-test your-org/your-repo`
+Then: `/crash-dummy your-org/your-repo`
 
-Any agent that reads skill files works the same way — the skill is one markdown
-file, [`SKILL.md`](SKILL.md), with no dependencies.
+Any agent that reads skill files works the same — the whole skill is one
+markdown file, [`SKILL.md`](SKILL.md), no dependencies.
 
-## Safety
+## Safety 🛡️
 
-The skill ships with hard gates: it treats your cloned repo as untrusted code,
-refuses to follow instructions embedded in target docs (prompt-injection guard),
-stops for consent before touching anything hosted or billable, and only ever
-uses throwaway credentials that the target's own quickstart creates.
+Hard gates ship with it: the cloned repo is treated as untrusted code,
+instructions embedded in target docs are ignored and reported
+(prompt-injection guard), anything hosted or billable requires one explicit
+up-front consent, and only throwaway credentials ever get used.
 
-## Share your TTFS
+## Share your readout
 
-If your repo survives a cold-start run, the report ends with a share block —
-your TTFS and what an AI built from your docs alone. Post it. If it doesn't
-survive, the report is a ranked fix list. Either way you win.
+Survive a crash test and the report ends with a share block — your TTFS and
+what an AI built from your docs alone. Post it. Fail one and you get a ranked
+fix list instead. Either way, better you than your users. 💥
 
 ## License
 
