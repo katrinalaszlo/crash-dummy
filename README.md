@@ -1,16 +1,12 @@
 # 🚗 crash-dummy
 
-**It crashes your product before your users do.**
+**Take your repo for a test drive.**
 
-Code review checks what your code says. crash-dummy checks what your product
-*does*: it builds a crash test dummy (a real client application, assembled
-from your docs alone), straps it in, and drives it into your product at full
-speed. Real clone, real integration, real user flows, real failures. Then it
-hands you the sensor readout.
+It builds a test user with a real application, integrates your product the way
+your docs teach, and runs the flows your customers will actually run. Every
+stumble gets logged with the exact command or doc line that caused it.
 
-Why a dummy? Because the alternative is your users.
-
-## How a crash test works
+## How it works
 
 1. **Cold clone:** your public repo, fresh temp workspace, the way a stranger gets it
 2. **Docs only:** reading your source is forbidden; getting stuck *is* the finding
@@ -27,7 +23,7 @@ undocumented second Docker stack at the repo root that hijacked
 `docker compose up`: a bug no amount of code review would surface. Fixed the
 same day.
 
-## Two ways to crash
+## Modes
 
 - **Cold-start** (default): builds a brand-new dummy from your docs alone and
   measures **TTFS**, time from clone to first success. Run it when docs,
