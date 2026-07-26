@@ -7,7 +7,7 @@
 <style>
   :root {
     --bg: #fafaf8; --fg: #1a1a1a; --muted: #6b6b6b; --card: #ffffff;
-    --border: #e5e3de; --accent: #e8590c; --pass: #2f9e44; --hazard: repeating-linear-gradient(135deg, #1a1a1a 0 12px, #f5c518 12px 24px);
+    --border: #e5e3de; --accent: #e8590c; --pass: #2f9e44; 
   }
   @media (prefers-color-scheme: dark) {
     :root { --bg: #141412; --fg: #ececea; --muted: #9a9a94; --card: #1e1e1b; --border: #32322e; --accent: #ff8a3d; --pass: #51cf66; }
@@ -15,7 +15,7 @@
   * { box-sizing: border-box; margin: 0; }
   body { background: var(--bg); color: var(--fg); font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, sans-serif; padding: 32px 16px; }
   .wrap { max-width: 760px; margin: 0 auto; }
-  .stripe { height: 10px; background: var(--hazard); border-radius: 3px; }
+  .stripe { height: 3px; background: var(--accent); border-radius: 2px; opacity: .9; }
   header { padding: 28px 0 20px; }
   .tag { font: 600 12px/1 ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
   h1 { font-size: 22px; margin: 6px 0 2px; }
@@ -42,7 +42,7 @@
 <div class="wrap">
   <div class="stripe"></div>
   <header>
-    <div class="tag">crash-dummy · {{MODE}} run · {{DATE}}</div>
+    <div class="tag">crash-dummy · {{MODE}} · {{DATE}}</div>
     <h1><code>{{TARGET_REPO}}</code> × dummy <code>{{DUMMY_NAME}}</code></h1>
     <div class="ttfs num">{{TTFS}}<small>{{TTFS_CAPTION}}</small></div>
     <p class="verdict">{{VERDICT}}</p>
@@ -50,12 +50,12 @@
 
   <div class="grid">
     <div class="card">
-      <h2><span class="badge">PASS</span> Crash scenario 1+2: happy path &amp; exhaustion</h2>
+      <h2><span class="badge">PASS</span> Scenario 1+2: happy path &amp; exhaustion</h2>
       <p>Five chat turns burn five credits with the balance live in the header (5 → 0). The sixth turn is denied <em>before</em> any provider cost: HTTP 402, red system message, paywall state.</p>
       <img alt="Chat UI showing five answered turns, a credit balance of zero, and an out-of-credits paywall" src="{{SCENARIO_SCREENSHOT_DATA_URI}}">
     </div>
     <div class="card">
-      <h2><span class="badge">PASS</span> Crash scenario 3: mid-session repricing</h2>
+      <h2><span class="badge">PASS</span> Scenario 3: mid-session repricing</h2>
       <p>Operator publishes a credit weight (<code>gpt-4.1-mini: 2</code>) while the app runs. After the cutover, the unchanged client burns the new rate: 10 → 8 → 6, −2 per turn.</p>
       <img alt="Chat UI showing turns deducting 2 credits each after the tariff took effect" src="{{SCENARIO_SCREENSHOT_DATA_URI}}">
     </div>
