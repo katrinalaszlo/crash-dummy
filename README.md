@@ -47,7 +47,7 @@ It tells you the estimated cost (time + tokens) before it starts driving.
 Claude Code:
 
 ```bash
-git clone https://github.com/tansohq/crash-dummy.git ~/.claude/skills/crash-dummy
+git clone https://github.com/katrinalaszlo/crash-dummy.git ~/.claude/skills/crash-dummy
 ```
 
 Then: `/crash-dummy your-org/your-repo`
