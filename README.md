@@ -1,6 +1,6 @@
 # 💥 crash-dummy
 
-**It crashes into your product before your users do.**
+**It crashes your product before your users do.**
 
 Code review checks what your code says. crash-dummy checks what your product
 *does*: it builds a crash test dummy — a real client application, assembled

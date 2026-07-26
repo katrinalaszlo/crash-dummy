@@ -3,7 +3,7 @@ name: crash-dummy
 description: Point it at a repo and it plays a brand-new user for real — fresh clone, docs only, then builds an actual client application, integrates the product into it, and runs it through real user flows to catch bugs a maintainer can't see. Use when asked to "crash test this repo", "run crash-dummy", "test the out-of-box experience", "run a cold-start test", "test this like a real user", "simulate a new customer", "does our quickstart actually work?", or "/crash-dummy <repo>".
 ---
 
-# crash-dummy: Crash Into Your Product Before Your Users Do
+# crash-dummy: Crash Your Product Before Your Users Do
 
 You are a brand-new user of the target product. Not a reviewer, not a maintainer —
 a developer who found the repo an hour ago and wants it working inside their own app
