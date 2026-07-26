@@ -1,3 +1,5 @@
+<img src="assets/logo.svg" alt="" width="96" align="left">
+
 # crash-dummy
 
 **It crashes your product before your users do.**

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- car body, side view, minimal line style -->
+  <g fill="none" stroke="#1a1a1a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 78 L18 62 Q20 56 27 55 L44 53 L58 40 Q60 38 64 38 L88 38 Q92 38 94 41 L104 55 L112 58 Q116 60 116 65 L116 74 Q116 78 112 78 L106 78" />
+    <path d="M62 44 L52 54 L72 54 L72 44 Z" fill="#fff"/>
+    <path d="M78 44 L78 54 L92 54 L86 44 Z" fill="#fff"/>
+    <line x1="44" y1="78" x2="84" y2="78" />
+  </g>
+  <!-- wheels -->
+  <circle cx="34" cy="80" r="11" fill="#fff" stroke="#1a1a1a" stroke-width="5"/>
+  <circle cx="94" cy="80" r="11" fill="#fff" stroke="#1a1a1a" stroke-width="5"/>
+  <!-- crash-test roundel on the door -->
+  <g>
+    <circle cx="64" cy="64" r="12" fill="#f5c518" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M64 52 A12 12 0 0 1 76 64 L64 64 Z" fill="#1a1a1a"/>
+    <path d="M64 76 A12 12 0 0 1 52 64 L64 64 Z" fill="#1a1a1a"/>
+  </g>
+</svg>
