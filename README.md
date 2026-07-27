@@ -8,6 +8,8 @@ stumble gets logged with the exact command or doc line that caused it.
 
 ## How it works
 
+<img src="assets/how-it-works.png" alt="How crash-dummy works: build one dummy per ICP from your docs alone, drive it through the happy path, the limit, and a mid-flight reconfig, then read the crash report" width="820">
+
 1. **Cold clone:** your public repo, in a fresh temp workspace
 2. **Docs only:** reading your source is off-limits; getting stuck is itself a finding
 3. **Build a client:** a real application (real framework, real UI, real env config) that integrates your product exactly as your docs describe
